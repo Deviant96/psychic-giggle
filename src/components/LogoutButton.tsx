@@ -1,11 +1,10 @@
-import { useRouter } from 'next/navigation';
+"use client";
 
 const LogoutButton: React.FC = () => {
-  const router = useRouter();
 
   const handleLogout = () => {
     localStorage.removeItem('psychicGiggle_userSession');
-    router.push('/signin');
+    window.location.reload();
   };
 
   return (
