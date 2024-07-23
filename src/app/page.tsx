@@ -3,33 +3,47 @@
 import Films from "@/components/Films";
 import type { character } from "./utils/types";
 import getPeople from "@/app/utils/getPeople";
-import withAuth from "@/components/withAuth";
 import { useEffect, useState } from "react";
-// import { character } from './utils/types';
+import { useRouter } from "next/navigation";
+import { getRandomNumber } from "@/app/utils/rand";
+import LogoutButton from "@/components/LogoutButton";
 
 const Home: React.FC = () => {
-  // const character: character = await getPeople(1);
   const [character, setCharacter] = useState<character>();
+  const peopleId = getRandomNumber();
+  const router = useRouter();
 
   useEffect(() => {
+    let isAuthenticated;
+    if (typeof window !== "undefined") {
+      isAuthenticated = localStorage.getItem("psychicGiggle_userSession");
+    }
+
+    if (!isAuthenticated) {
+      router.replace("/login");
+    }
+
     const fetchData = async () => {
-      const res = await getPeople(1);
+      const res = await getPeople(peopleId);
       setCharacter(res);
     };
 
-    fetchData;
+    fetchData();
   }, []);
 
   return (
-    <div className="container mx-auto">
-      <header className="p-4 bg-gray-800 text-white">
-        <h1>{character?.name}</h1>
-      </header>
-      <main>
-        <Films />
-      </main>
-    </div>
+    <>
+      <div className="container mx-auto">
+        <header className="p-4 bg-gray-800 text-white flex flex-row justify-between items-center">
+          <h1 className="text-2xl font-bold">{character?.name}</h1>
+          <LogoutButton />
+        </header>
+        <main>
+          <Films />
+        </main>
+      </div>
+    </>
   );
 };
 
-export default withAuth(Home);
+export default Home;

@@ -1,11 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default function GET(req: NextApiRequest, res: NextApiResponse) {
-  const { username, password } = req.body;
+export async function POST(req: NextResponse, res: NextRequest) {
+  const { username, password } = await req.json();
 
   if (username === 'user' && password === 'password') {
-    return res.status(200).json({ user: { id: 1, name: 'User', email: 'user@example.com' } });
+    return Response.json({ user: { id: 1, name: 'User', email: 'user@example.com' } });
   } else {
-    return res.status(401).json({ error: 'Invalid credentials' });
+    return Response.json({ error: 'Invalid credentials' });
   }
 }
