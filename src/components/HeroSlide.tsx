@@ -2,6 +2,7 @@
 import { formatDateToYear } from "@/app/utils/formatDateToYear";
 import { Film } from "@/app/utils/types";
 import { BiPlayCircle, BiShare } from "react-icons/bi";
+import { BsPlay, BsPlayBtnFill, BsPlayFill } from "react-icons/bs";
 
 interface SliderProps {
   content: Film;
@@ -14,28 +15,26 @@ const HeroSlide: React.FC<SliderProps> = ({ content }) => {
   const formattedDateToYear = formatDateToYear(release_date);
 
   return (
-    <div className="relative w-full min-h-[70vh] overflow-hidden">
+    <div className="relative w-full min-h-[70vh] overflow-hidden rounded-lg md:rounded-none">
       {/* Bg */}
       <div className="absolute inset-0 flex items-center">
         {/* Overlay */}
         <div className="relative flex justify-between items-center w-full h-full mx-auto">
           {/* Content */}
-          <div className="absolute left-0 bottom-0 py-12 px-16 bg-m-hero-text-overlay
+          <div className="absolute left-0 bottom-0 py-12 px-8 bg-m-hero-text-overlay
             md:static md:w-3/5 text-white md:p-20 md:bg-blue-fade-in-right md:h-full z-10 flex flex-col justify-center md:pe-40">
             <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
             <p className="text-lg mb-4">{formattedDateToYear}</p>
             <p className="text-base mb-4 clamp-3">{opening_crawl}</p>
             <div className="flex flex-row gap-4">
               <button
-              //   onClick={onButtonClick}
-                className="mt-8 px-4 py-2 bg-[#ffb400] text-black hover:bg-blue-600 font-semibold rounded flex flex-row justify-center items-center gap-2 flex-shrink-0 w-fit"
+                className="mt-8 px-8 py-2 bg-[#ffb400] text-black hover:bg-blue-600 font-semibold rounded-full flex flex-row justify-center items-center gap-2 flex-shrink-0 w-fit flex-1"
               >
+                <BsPlayFill className="text-xl" />
                 {`Play`}
-                <BiPlayCircle />
               </button>
               <button
-              //   onClick={onButtonClick}
-                className="md:hidden mt-8 px-4 py-2 bg-transparent border border-[#ffb400] text-[#ffb400] hover:bg-blue-600 font-semibold rounded flex flex-row justify-center items-center gap-2 flex-shrink-0 w-fit"
+                className="md:hidden mt-8 px-8 py-2 bg-transparent border border-[#ffb400] text-[#ffb400] hover:bg-blue-600 font-semibold rounded-full flex flex-row justify-center items-center gap-2 flex-shrink-0 w-fit flex-1"
               >
                 <BiShare />
                 {`Share`}
@@ -48,7 +47,7 @@ const HeroSlide: React.FC<SliderProps> = ({ content }) => {
             <img
               src={`https://picsum.photos/200/300?random=${Math.random()}`}
               alt={`Movie poster`}
-              className="object-cover h-full w-full rounded-lg"
+              className="object-cover h-full w-full"
             />
           </div>
         </div>

@@ -13,7 +13,6 @@ interface SliderProps {
 }
 
 const Hero: React.FC<SliderProps> = ({ slides }) => {
-  console.log(slides)
   return (
     <>
     {slides.length < 1 ?
@@ -27,6 +26,18 @@ const Hero: React.FC<SliderProps> = ({ slides }) => {
       navigation={true}
       loop={true}
       autoplay={true}
+      breakpoints={{
+        320: {
+          navigation: {
+            enabled: false,
+          },
+        },
+        768: {
+          navigation: {
+            enabled: true,
+          },
+        }
+      }}
     >
         {slides.map((film: Film) => (
             <SwiperSlide><HeroSlide content={film} /></SwiperSlide>

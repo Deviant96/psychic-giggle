@@ -54,7 +54,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="">
+      <div className="bg-[#041836]">
         <header className="px-10 py-6 bg-blue-900 text-white flex flex-row justify-between items-center">
           <h1 className="text-2xl font-bold">{character?.name}</h1>
           {authenticated ? 
@@ -65,7 +65,7 @@ const Home: React.FC = () => {
           </button>
           }
         </header>
-        <main>
+        <main className="m-4 md:m-0">
           <Hero slides={heroFilms} />
           <Films />
         </main>
@@ -95,7 +95,7 @@ const Home: React.FC = () => {
             </div>
 
           </div>
-          <div className="bg-blue-800 px-10 py-6 text-center font-bold"> Copyright &copy; 2024 DesktopIP </div>
+          <div className="bg-blue-800 px-10 py-6 text-center text-white font-bold"> Copyright &copy; 2024 DesktopIP </div>
         </footer>
         <Modal isOpen={isSignInModalOpen} onClose={closeSignInModal} title="Sign In">
           <LoginForm />
