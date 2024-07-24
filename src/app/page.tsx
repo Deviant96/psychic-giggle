@@ -63,6 +63,9 @@ const Home: React.FC = () => {
           <Hero slides={heroFilms} />
           <Films />
         </main>
+        <footer className="bg-blue-800 w-full px-10 py-6">
+          <div className="text-center font-bold"> Copyright &copy; 2024 DesktopIP </div>
+        </footer>
         <Modal isOpen={isSignInModalOpen} onClose={closeSignInModal} title="Sign In">
           <LoginForm />
         </Modal>
