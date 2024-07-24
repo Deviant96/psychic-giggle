@@ -1,8 +1,9 @@
 
 import { formatDateToYear } from "@/app/utils/formatDateToYear";
 import { Film } from "@/app/utils/types";
-import { BiPlayCircle, BiShare } from "react-icons/bi";
-import { BsPlay, BsPlayBtnFill, BsPlayFill } from "react-icons/bs";
+import Image from "next/image";
+import { BiShare } from "react-icons/bi";
+import { BsPlayFill } from "react-icons/bs";
 
 interface SliderProps {
   content: Film;
@@ -44,10 +45,12 @@ const HeroSlide: React.FC<SliderProps> = ({ content }) => {
 
           {/* Image */}
           <div className="w-full h-full md:w-3/5 absolute left-0 md:left-auto md:right-0 z-0">
-            <img
+            <Image
               src={`https://picsum.photos/200/300?random=${Math.random()}`}
               alt={`Movie poster`}
               className="object-cover h-full w-full"
+              width={500}
+              height={400}
             />
           </div>
         </div>

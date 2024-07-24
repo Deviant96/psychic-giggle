@@ -39,8 +39,8 @@ const Hero: React.FC<SliderProps> = ({ slides }) => {
         }
       }}
     >
-        {slides.map((film: Film) => (
-            <SwiperSlide><HeroSlide content={film} /></SwiperSlide>
+        {slides.map((film: Film, index: number) => (
+            <SwiperSlide key={index}><HeroSlide content={film} /></SwiperSlide>
         ))}
     </Swiper>
     )}

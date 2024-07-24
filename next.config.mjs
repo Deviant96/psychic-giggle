@@ -1,9 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        serverActions: {
-            allowedOrigins: ['swapi.dev'],
-        },
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'swapi.dev',
+          },
+          {
+            protocol: 'https',
+            hostname: 'picsum.photos',
+          },
+        ],
     },
 };
 

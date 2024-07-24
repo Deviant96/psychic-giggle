@@ -10,11 +10,9 @@ import Modal from "@/components/Modal";
 import LoginForm from "@/components/LoginForm";
 import Hero from "@/components/Hero";
 import axios from "axios";
-import { PiGps } from "react-icons/pi";
 import { MdEmail } from "react-icons/md";
 import { BsInstagram, BsTelephone, BsTiktok, BsTwitter, BsYoutube } from "react-icons/bs";
 import { RiFacebookCircleFill } from "react-icons/ri";
-import { CiGps } from "react-icons/ci";
 import { FaLocationPin } from "react-icons/fa6";
 
 const Home: React.FC = () => {
