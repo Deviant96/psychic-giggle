@@ -2,12 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
-interface Film {
-  episode_id: number;
-  title: string;
-  opening_crawl: string;
-}
+import { Film } from '@/app/utils/types';
 
 const Films: React.FC = () => {
   const [films, setFilms] = useState<Film[]>([]);

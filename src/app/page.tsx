@@ -1,39 +1,22 @@
 "use client";
 
 import Films from "@/components/Films";
-import type { character } from "./utils/types";
+import type { character, Film } from "./utils/types";
 import getPeople from "@/app/utils/getPeople";
 import { useEffect, useState } from "react";
 import { getRandomNumber } from "@/app/utils/rand";
 import LogoutButton from "@/components/LogoutButton";
 import Modal from "@/components/Modal";
 import LoginForm from "@/components/LoginForm";
-import Slider from "@/components/Slider";
-
-const slides = [
-  {
-    imageSrc: 'https://picsum.photos/200/300',
-    title: 'Slide 1 Title',
-    meta: 'Slide 1 Meta',
-    description: 'Description',
-    buttonText: 'Play',
-    onButtonClick: () => {},
-  },
-  {
-    imageSrc: 'https://picsum.photos/200/300',
-    title: 'Slide 2 Title',
-    meta: 'Slide 2 Meta',
-    description: 'Descriiption',
-    buttonText: 'Play',
-    onButtonClick: () => {},
-  },
-];
+import Hero from "@/components/Hero";
+import axios from "axios";
 
 const Home: React.FC = () => {
   const [character, setCharacter] = useState<character>();
   const [authenticated, setAuthenticated] = useState<boolean>();
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const peopleId = getRandomNumber();
+  const [films, setFilms] = useState<Film[]>([]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -49,10 +32,19 @@ const Home: React.FC = () => {
     };
 
     fetchData();
+
+    const fetchFilms = async () => {
+      const res = await axios.get('https://swapi.dev/api/films/');
+      setFilms(res.data.results);
+    };
+
+    fetchFilms();
   }, []);
 
   const openSignInModal = () => setIsSignInModalOpen(true);
   const closeSignInModal = () => setIsSignInModalOpen(false);
+
+  const heroFilms: Film[] = films.slice(0, 5);
 
   return (
     <>
@@ -68,7 +60,7 @@ const Home: React.FC = () => {
           }
         </header>
         <main>
-          <Slider slides={slides} />
+          <Hero slides={heroFilms} />
           <Films />
         </main>
         <Modal isOpen={isSignInModalOpen} onClose={closeSignInModal} title="Sign In">
