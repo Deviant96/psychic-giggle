@@ -49,7 +49,7 @@ const Home: React.FC = () => {
   return (
     <>
       <div className="">
-        <header className="p-4 bg-blue-900 text-white flex flex-row justify-between items-center">
+        <header className="px-10 py-6 bg-blue-900 text-white flex flex-row justify-between items-center">
           <h1 className="text-2xl font-bold">{character?.name}</h1>
           {authenticated ? 
           (<LogoutButton />)
