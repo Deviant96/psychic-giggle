@@ -48,8 +48,8 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="container mx-auto">
-        <header className="p-4 bg-gray-800 text-white flex flex-row justify-between items-center">
+      <div className="">
+        <header className="p-4 bg-blue-900 text-white flex flex-row justify-between items-center">
           <h1 className="text-2xl font-bold">{character?.name}</h1>
           {authenticated ? 
           (<LogoutButton />)
