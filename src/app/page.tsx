@@ -10,6 +10,12 @@ import Modal from "@/components/Modal";
 import LoginForm from "@/components/LoginForm";
 import Hero from "@/components/Hero";
 import axios from "axios";
+import { PiGps } from "react-icons/pi";
+import { MdEmail } from "react-icons/md";
+import { BsInstagram, BsTelephone, BsTiktok, BsTwitter, BsYoutube } from "react-icons/bs";
+import { RiFacebookCircleFill } from "react-icons/ri";
+import { CiGps } from "react-icons/ci";
+import { FaLocationPin } from "react-icons/fa6";
 
 const Home: React.FC = () => {
   const [character, setCharacter] = useState<character>();
@@ -63,8 +69,33 @@ const Home: React.FC = () => {
           <Hero slides={heroFilms} />
           <Films />
         </main>
-        <footer className="bg-blue-800 w-full px-10 py-6">
-          <div className="text-center font-bold"> Copyright &copy; 2024 DesktopIP </div>
+        <footer className="w-full">
+          <div className="bg-[#ffb400] px-4 py-6 text-black rounded-t-2xl block md:hidden">
+            <h4 className="text-xl font-bold text-center mt-4">{character?.name}</h4>
+            <div className="mt-8">
+              <h5 className="mb-2 font-bold">Follow us</h5>
+              <ul className="flex flex-row gap-4 text-[#bb6002]">
+                <li><RiFacebookCircleFill className="text-3xl"/></li>
+                <li><BsInstagram className="text-3xl"/></li>
+                <li><BsTiktok className="text-3xl"/></li>
+                <li><BsTwitter className="text-3xl"/></li>
+                <li><BsYoutube className="text-3xl"/></li>
+              </ul>
+            </div>
+            <div className="mt-8">
+              <h5 className="mb-2 font-bold">Contact us</h5>
+              <ul className="flex flex-col gap-4 text-[#bb6002] font-bold">
+                <li className="flex flex-row items-center gap-2"><MdEmail className="text-xl text-white" /> Email to desktopip@mail.com</li>
+                <li className="flex flex-row items-center gap-2"><BsTelephone className="text-xl text-white" /> Call us at 0123456789</li>
+              </ul>
+            </div>
+            <div className="mt-8">
+              <h5 className="mb-2 font-bold">Address</h5>
+              <div className="flex flex-row items-center gap-2 text-[#bb6002] font-bold"><FaLocationPin className="text-xl text-white" /> Address</div>
+            </div>
+
+          </div>
+          <div className="bg-blue-800 px-10 py-6 text-center font-bold"> Copyright &copy; 2024 DesktopIP </div>
         </footer>
         <Modal isOpen={isSignInModalOpen} onClose={closeSignInModal} title="Sign In">
           <LoginForm />
