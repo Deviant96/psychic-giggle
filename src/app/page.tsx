@@ -8,6 +8,26 @@ import { getRandomNumber } from "@/app/utils/rand";
 import LogoutButton from "@/components/LogoutButton";
 import Modal from "@/components/Modal";
 import LoginForm from "@/components/LoginForm";
+import Slider from "@/components/Slider";
+
+const slides = [
+  {
+    imageSrc: 'https://picsum.photos/200/300',
+    title: 'Slide 1 Title',
+    meta: 'Slide 1 Meta',
+    description: 'Description',
+    buttonText: 'Play',
+    onButtonClick: () => {},
+  },
+  {
+    imageSrc: 'https://picsum.photos/200/300',
+    title: 'Slide 2 Title',
+    meta: 'Slide 2 Meta',
+    description: 'Descriiption',
+    buttonText: 'Play',
+    onButtonClick: () => {},
+  },
+];
 
 const Home: React.FC = () => {
   const [character, setCharacter] = useState<character>();
@@ -48,6 +68,7 @@ const Home: React.FC = () => {
           }
         </header>
         <main>
+          <Slider slides={slides} />
           <Films />
         </main>
         <Modal isOpen={isSignInModalOpen} onClose={closeSignInModal} title="Sign In">
