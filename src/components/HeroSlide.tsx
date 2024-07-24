@@ -44,7 +44,7 @@ const HeroSlide: React.FC<SliderProps> = ({ content }) => {
           </div>
 
           {/* Image */}
-          <div className="w-full h-full md:w-3/5 absolute left-0 md:right-0 z-0">
+          <div className="w-full h-full md:w-3/5 absolute left-0 md:left-auto md:right-0 z-0">
             <img
               src={`https://picsum.photos/200/300?random=${Math.random()}`}
               alt={`Movie poster`}
