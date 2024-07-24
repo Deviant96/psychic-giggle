@@ -23,6 +23,7 @@ const Home: React.FC = () => {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const peopleId = getRandomNumber();
   const [films, setFilms] = useState<Film[]>([]);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -54,16 +55,48 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="bg-[#041836]">
-        <header className="px-10 py-6 bg-blue-900 text-white flex flex-row justify-between items-center">
-          <h1 className="text-2xl font-bold">{character?.name}</h1>
-          {authenticated ? 
-          (<LogoutButton />)
-          :
-          <button onClick={openSignInModal} className="bg-[#ffb400] text-black font-bold px-6 py-2 rounded-full">
-            Sign In
-          </button>
-          }
+      <div className="bg-[#041836] relative">
+        <header
+          className="md:absolute top-0 left-0 w-full z-[11]"
+        >
+        <nav className="md:shadow-lg bg-[#041836] md:my-4 md:mx-8 rounded-xl md:shadow-none">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex justify-between items-center py-3">
+              <div className="flex items-center">
+                <button
+                  className="md:hidden text-gray-500 focus:outline-none"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                  </svg>
+                </button>
+                <div className="text-lg font-bold text-[#ffb400] ml-2 md:ml-0">{character?.name}</div>
+              </div>
+              <div className="hidden md:flex space-x-4">
+                <a href="#" className="text-[#ffb400] hover:text-[#ffb400]">Home</a>
+                <a href="#" className="text-[#ffb400] hover:text-[#ffb400]">About</a>
+                <a href="#" className="text-[#ffb400] hover:text-[#ffb400]">Services</a>
+                <a href="#" className="text-[#ffb400] hover:text-[#ffb400]">Contact</a>
+              </div>
+              <div>
+                {authenticated ? 
+                  (<LogoutButton />)
+                  :
+                  <button onClick={openSignInModal} className="bg-[#ffb400] text-black font-bold px-6 py-2 rounded-full">
+                    Sign In
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+          <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} px-2 pb-3 space-y-1`}>
+            <a href="#" className="block text-gray-700 hover:text-gray-900">Home</a>
+            <a href="#" className="block text-gray-700 hover:text-gray-900">About</a>
+            <a href="#" className="block text-gray-700 hover:text-gray-900">Services</a>
+            <a href="#" className="block text-gray-700 hover:text-gray-900">Contact</a>
+          </div>
+        </nav>
         </header>
         <main className="m-4 md:m-0">
           <Hero slides={heroFilms} />
