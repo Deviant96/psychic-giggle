@@ -35,7 +35,7 @@ const HeroSlide: React.FC<SliderProps> = ({ content }) => {
               </button>
               <button
               //   onClick={onButtonClick}
-                className="md:hidden mt-8 px-4 py-2 bg-transparent border border-[#ffb400] text-[#ffb400] hover:bg-blue-600 text-white font-semibold rounded flex flex-row justify-center items-center gap-2 flex-shrink-0 w-fit"
+                className="md:hidden mt-8 px-4 py-2 bg-transparent border border-[#ffb400] text-[#ffb400] hover:bg-blue-600 font-semibold rounded flex flex-row justify-center items-center gap-2 flex-shrink-0 w-fit"
               >
                 <BiShare />
                 {`Share`}
